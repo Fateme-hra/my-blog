@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>نام شما | تماس</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="nav-container">
+    <a href="index.html" class="logo">نام شما</a>
+
+    <div style="display:flex; align-items:center; gap:1.4rem;">
+      <button id="theme-toggle" aria-label="تغییر تم">🌙</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <nav>
+      <ul id="navLinks">
+        <li><a href="index.html">خانه</a></li>
+        <li><a href="about.html">درباره</a></li>
+        <li><a href="blog.html">نوشته‌ها</a></li>
+        <li><a href="contact.html" class="active">تماس</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1 class="section-title fade-in">تماس با من</h1>
+
+  <div class="card fade-in" style="max-width: 720px; margin: 0 auto;">
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+      <div style="margin-bottom: 1.6rem;">
+        <label for="name" style="display:block; margin-bottom: 0.6rem; font-weight:500;">نام</label>
+        <input type="text" id="name" name="name" required
+               style="width:100%; padding:0.9rem 1.2rem; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-family:inherit;">
+      </div>
+
+      <div style="margin-bottom: 1.6rem;">
+        <label for="email" style="display:block; margin-bottom: 0.6rem; font-weight:500;">ایمیل</label>
+        <input type="email" id="email" name="email" required
+               style="width:100%; padding:0.9rem 1.2rem; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-family:inherit;">
+      </div>
+
+      <div style="margin-bottom: 2rem;">
+        <label for="message" style="display:block; margin-bottom: 0.6rem; font-weight:500;">پیام شما</label>
+        <textarea id="message" name="message" rows="7" required
+                  style="width:100%; padding:0.9rem 1.2rem; border:1px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-family:inherit; resize:vertical;"></textarea>
+      </div>
+
+      <button type="submit" class="btn" style="width:100%;">ارسال پیام</button>
+    </form>
+
+    <p style="text-align:center; margin-top:2rem; color:var(--text-muted);">
+      یا مستقیم ایمیل بزنید: <strong>yourname@example.com</strong>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <p>© ۱۴۰۴ — نام شما<br>ساخته شده با HTML + CSS + JavaScript وانیلا</p>
+</footer>
+
+<button id="back-to-top" aria-label="بازگشت به بالا">↑</button>
+
+<script>
+// همان اسکریپت قبلی (کپی از index.html)
+const ham = document.getElementById('hamburger');
+const nav = document.getElementById('navLinks');
+ham.onclick = () => {
+  ham.classList.toggle('active');
+  nav.classList.toggle('active');
+};
+
+const themeToggle = document.getElementById('theme-toggle');
+const html = document.documentElement;
+
+function setTheme(theme) {
+  html.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+  themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
+}
+
+let saved = localStorage.getItem('theme');
+if (!saved) {
+  saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+setTheme(saved);
+
+themeToggle.onclick = () => {
+  setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+};
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+const btt = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+  btt.classList.toggle('show', window.scrollY > 350);
+});
+btt.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
+</script>
+</body>
+</html>

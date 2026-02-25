@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>چرا هنوز CSS خالص می‌نویسم؟ | نام شما</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body data-theme="dark">
+
+<header>
+  <div class="nav-container">
+    <a href="../index.html" class="logo">نام شما</a>
+
+    <div style="display:flex; align-items:center; gap:1.4rem;">
+      <button id="theme-toggle" aria-label="تغییر تم">🌙</button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+
+    <nav>
+      <ul id="navLinks">
+        <li><a href="../index.html">خانه</a></li>
+        <li><a href="../about.html">درباره</a></li>
+        <li><a href="../blog.html" class="active">نوشته‌ها</a></li>
+        <li><a href="../contact.html">تماس</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <article class="card fade-in" style="max-width:860px; margin:2.5rem auto;">
+    <h1>چرا هنوز CSS خالص می‌نویسم؟ (۱۴۰۴)</h1>
+    <div class="meta" style="margin:1.2rem 0 2.2rem;">۱۴۰۴/۱۱/۲۵ · حدود ۶ دقیقه خواندن</div>
+
+    <p>با وجود ابزارهای فوق‌العاده مثل Tailwind، UnoCSS، PandaCSS، Shadcn/ui و ... هنوز پروژه‌هایی هستند که عمداً با CSS خام نوشته می‌شوند. دلایل شخصی من:</p>
+
+    <ol style="padding-right:2rem; margin:1.4rem 0;">
+      <li>کنترل دقیق و کامل روی هر خط استایل</li>
+      <li>حذف وابستگی به ابزارهای build و postcss</li>
+      <li>حجم نهایی کمتر (مخصوصاً برای سایت‌های کوچک)</li>
+      <li>یادگیری عمیق‌تر مفاهیم CSS</li>
+      <li>لذت نوشتن و نگهداری کد بدون لایه‌های انتزاعی اضافی</li>
+    </ol>
+
+    <p>این انتخاب برای همه مناسب نیست، اما اگر پروژه‌تان کوچک یا متوسط است، ارزش امتحان کردن را دارد.</p>
+
+    <p style="margin-top:3rem;">
+      <a href="../blog.html" class="read-more">← بازگشت به لیست نوشته‌ها</a>
+    </p>
+  </article>
+</main>
+
+<footer>
+  <p>© ۱۴۰۴ — نام شما<br>ساخته شده با HTML + CSS + JavaScript وانیلا</p>
+</footer>
+
+<button id="back-to-top" aria-label="بازگشت به بالا">↑</button>
+
+<script>
+// همان اسکریپت همیشگی
+const ham = document.getElementById('hamburger');
+const nav = document.getElementById('
